@@ -74,13 +74,15 @@ jobs:
 
   result:
     name: Send notification
+    needs: [build, deploy]
     runs-on: ubuntu-latest
     steps:
-      - name: Send Discord notification
-        if: ${{ job.status }}
+      - name: Send Discord notification on success
+        if: ${{ needs.build.result == 'success' && needs.deploy.result == 'success' }}
         run: |
-          if [ "${{ job.status }}" == "success" ]; then
-            curl -X POST -H "Content-Type: application/json" -d '{"content": "✅ : Deployment to AWS ECS was successful!"}' ${{ secrets.DISCORD_WEBHOOK_URL }}
-          else
-            curl -X POST -H "Content-Type: application/json" -d '{"content": "❌ : Deployment to AWS ECS failed!"}' ${{ secrets.DISCORD_WEBHOOK_URL }}
-          fi
+          curl -X POST -H "Content-Type: application/json" -d '{"content": "✅ : Deployment to AWS ECS was successful!"}' ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+      - name: Send Discord notification on failure
+        if: ${{ needs.build.result != 'success' || needs.deploy.result != 'success' }}
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"content": "❌ : Deployment to AWS ECS failed!"}' ${{ secrets.DISCORD_WEBHOOK_URL }}
