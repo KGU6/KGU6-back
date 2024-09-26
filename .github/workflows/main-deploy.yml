@@ -2,7 +2,7 @@ name: Deploy to AWS ECS
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "feat/CICD" ]
 
 jobs:
   build:
@@ -19,6 +19,15 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+
+      - name: Set yml file
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: ./src/main/resources/application-prod.yml
+        env:
+          spring.datasource.url: ${{ secrets.MYSQL_URL }}
+          spring.datasource.username: ${{ secrets.MYSQL_USERNAME }}
+          spring.datasource.password: ${{ secrets.MYSQL_PASSWORD }}
 
       - name: Build with Gradle
         run: |

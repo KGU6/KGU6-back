@@ -12,4 +12,4 @@ WORKDIR /app
 
 COPY ${JAR_PATH} /app/app.jar
 
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "-Dspring.profiles.active=prod", "/app/app.jar"]
