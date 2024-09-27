@@ -1,7 +1,7 @@
 package com.kakaogroom6.server.profile.service;
 
 import com.kakaogroom6.server.member.entity.MemberEntity;
-import com.kakaogroom6.server.member.repository.UserRepository;
+import com.kakaogroom6.server.member.repository.MemberRepository;
 import com.kakaogroom6.server.place.entity.PlaceEntity;
 import com.kakaogroom6.server.place.repository.PlaceRepository;
 import com.kakaogroom6.server.profile.dto.res.ProfileResponseDto;
@@ -19,14 +19,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProfileService {
 
-    private final UserRepository userRepository;
+    private final MemberRepository userRepository;
     private final TravelogRepository travelogRepository;
     private final PlaceRepository placeRepository;
 
     @Transactional
-    public ProfileResponseDto getProfile(String name) {
+    public ProfileResponseDto getProfile(String email) {
         // 맴버 객체 불러오기(맴버 이름, 맴버 프로필 사진 url)
-        MemberEntity member = userRepository.findByName(name)
+        MemberEntity member = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("No Member Found"));
 
         // 해당 맴버의 트래블로그들 불러오기(해당 맴버의 아이디를 통해, 그 아이디로 등록되어 있는 트래블로그 불러옴)
@@ -58,7 +58,7 @@ public class ProfileService {
 
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                firstPlace != null ? firstPlace.getImageUrl() : null,
+                firstPlace != null ? firstPlace.getImageUrl() : null, // TODO 대표이미지로 교체
                 firstPlace != null ? firstPlace.getName() : null,
                 travelog.getTitle(),
                 travelog.getCreatedAt()
