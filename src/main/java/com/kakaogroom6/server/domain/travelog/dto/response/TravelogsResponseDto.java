@@ -1,4 +1,4 @@
-package com.kakaogroom6.server.domain.travelog.dto.res;
+package com.kakaogroom6.server.domain.travelog.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
