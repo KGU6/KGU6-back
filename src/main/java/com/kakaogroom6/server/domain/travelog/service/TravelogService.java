@@ -72,6 +72,7 @@ public class TravelogService {
         String formattedDate = travelog.getCreatedAt().format(formatter);
 
         return new TravelogSummaryDto(
+                travelog.getId(),
                 travelog.getMember().getName(),
                 travelog.getImageurl(),
                 travelog.getMainPlace(),

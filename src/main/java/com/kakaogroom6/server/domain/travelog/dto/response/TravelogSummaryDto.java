@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TravelogSummaryDto {
+    private Long id;
     private String userName;
     private String imageUrl;
     private String placeName;
