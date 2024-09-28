@@ -16,3 +16,6 @@ cloud:
       bucket: ${S3_BUCKET}
     stack:
       auto: false
+
+security:
+  email: "ahh0520@naver.com"

@@ -11,6 +11,7 @@ import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import com.kakaogroom6.server.global.errors.code.CommonErrorCode;
 import com.kakaogroom6.server.global.errors.exception.RestApiException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
@@ -25,7 +26,7 @@ public class CommentService {
     private final MemberRepository memberRepository;
     private final TravelogRepository travelogRepository;
 
-    public boolean saveComment(String email, CommentRequestDto request){
+    public boolean saveComment(@Value("${security.email}")String email, CommentRequestDto request){
         MemberEntity member = memberRepository.findByEmail(email)
                 .orElseThrow(() -> new RestApiException(CommonErrorCode.MEMBER_NOT_FOUND));
 
