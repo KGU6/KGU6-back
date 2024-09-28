@@ -2,19 +2,16 @@ package com.kakaogroom6.server.domain.travelog.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import com.kakaogroom6.server.domain.travelog.dto.request.CreateOnePlaceRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.CreateTravelogRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.FirstTravelRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.CreateTravelogResponseDTO;
+import com.kakaogroom6.server.domain.travelog.dto.response.GetTravelogDetaiResponselDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.service.TravelogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -38,28 +35,11 @@ public class TravelogController {
         return ResponseEntity.ok(response);
     }
 
+
     // 여행기 등록
-//    @PostMapping("/")
-//    public ResponseEntity<CreateTravelogResponseDTO> createTravelog(
-//            @RequestParam("title") String title,
-//            @RequestParam("startDate") LocalDate startDate,
-//            @RequestParam("endDate") LocalDate endDate,
-//            @RequestParam("keywords") List<String> keywords,
-//            @RequestParam("email") String email,
-//            @RequestParam(value = "mainImage", required = false) MultipartFile mainImage,
-//            @RequestParam("mainPlace") String mainPlace,
-//            @RequestPart("placeContent") List<CreateOnePlaceRequestDTO> placeContent) {
-//
-//        CreateTravelogRequestDTO request = new CreateTravelogRequestDTO();
-//        System.out.println("controller"+placeContent);
-//        request.setTravelogData(title, startDate, endDate, keywords, email, mainImage, mainPlace, placeContent);
-//
-//        CreateTravelogResponseDTO response = travelogService.createTravelog(request);
-//        return ResponseEntity.ok(response);
-//    }
     @PostMapping("/")
     public ResponseEntity<CreateTravelogResponseDTO> createTravelog(
-            @RequestPart("mainImage") MultipartFile mainImage,
+            @RequestPart(value = "mainImage") MultipartFile mainImage,
             @RequestPart("travelog") String travelogJson,
             @RequestParam("email") String email
     ) {
@@ -86,5 +66,9 @@ public class TravelogController {
         return ResponseEntity.ok(response);
     }
 
-
+    @GetMapping("/{travelogId}")
+    public ResponseEntity<GetTravelogDetaiResponselDTO> getTravelogDetail(@PathVariable Long travelogId) {
+        GetTravelogDetaiResponselDTO travelogDetail = travelogService.getTravelogDetail(travelogId);
+        return ResponseEntity.ok(travelogDetail);
+    }
 }
