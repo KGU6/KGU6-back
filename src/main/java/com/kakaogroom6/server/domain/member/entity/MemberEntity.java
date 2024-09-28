@@ -2,6 +2,7 @@ package com.kakaogroom6.server.domain.member.entity;
 
 import com.kakaogroom6.server.global.common.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Getter@Setter
 @Table(name = "member")
+@Builder
 public class MemberEntity extends BaseEntity {
 
     @Id
