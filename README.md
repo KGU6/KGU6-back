@@ -12,10 +12,6 @@
 <br />
 <br />
 
-<h2>🗝️ ERD</h2>
-<img src="https://github.com/user-attachments/assets/1384ffdf-cb35-49ed-81f5-690374545625"/>
-<br />
-<br />
 
 <h2>📁 API</h2>
 <img src="https://github.com/user-attachments/assets/8ff9bf10-fb7b-4d9c-8feb-d217ace70e3c"/>
@@ -79,7 +75,8 @@
 | Name | 김민상 | 김가연 | 이준석 | 김다은 | 백지웅 | 이승원 | 황승기 | 한준서 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | Position | PM | Designer | FE | FE | FE | BE | BE | BE |
-| Github | [@nagosu](https://github.com/nagosu) | [@Seungkiii](https://github.com/Seungkiii) | [@syxxnjeong](https://github.com/syxxnjeong) | [@non-cpu](https://github.com/non-cpu) | [@Iana74](https://github.com/Iana74) | [@Juice-Han](https://github.com/Juice-Han) | [@Ahnnakyung](https://github.com/Ahnnakyung) | [@Github] |
+| Github |  |  | [@leeleeleeleejun](https://github.com/leeleeleeleejun) | [@dani1552](https://github.com/dani1552) | [@jw6133
+](https://github.com/jw6133) | [@SolfE](https://github.com/SolfE) | [@Seungkiii](https://github.com/Seungkiii) | [@xunxxoie](https://github.com/xunxxoie) |
 
 
 <br />
