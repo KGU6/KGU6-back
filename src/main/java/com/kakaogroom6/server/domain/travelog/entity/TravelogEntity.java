@@ -1,34 +1,38 @@
 package com.kakaogroom6.server.domain.travelog.entity;
 
 import com.kakaogroom6.server.domain.member.entity.MemberEntity;
+import com.kakaogroom6.server.domain.place.entity.Cloud;
+import com.kakaogroom6.server.global.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "travelog")
-public class TravelogEntity {
+public class TravelogEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "MemberEntity_id")
     private MemberEntity member;
 
     private String title;
     private LocalDate startDate;
     private LocalDate endDate;
     private Integer likes;
+    private String imageurl;
 
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
+    public void setDetails(String title, LocalDate startDate, LocalDate endDate, MemberEntity member) {
+        this.title = title;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.member = member;
+    }
 }

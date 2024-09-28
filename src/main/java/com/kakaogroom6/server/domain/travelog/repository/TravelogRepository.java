@@ -15,4 +15,6 @@ public interface TravelogRepository extends JpaRepository<TravelogEntity, Long> 
     List<TravelogEntity> findAllByOrderByLikesDesc();
     List<TravelogEntity> findByTitleContainingOrderByCreatedAtDesc(String keyword);
     List<TravelogEntity> findByTitleContainingOrderByLikesDesc(String keyword);
+
+
 }
