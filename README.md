@@ -18,7 +18,7 @@
 <br />
 
 <h2>📁 API</h2>
-<img src="https://ifh.cc/g/VOjJrm.png"/>
+<img src="https://github.com/user-attachments/assets/8ff9bf10-fb7b-4d9c-8feb-d217ace70e3c"/>
 
 <br />
 
@@ -46,9 +46,7 @@
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white">
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
 <img src="https://img.shields.io/badge/Styled_Components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white">
-<img src="https://img.shields.io/badge/Recoil-764ABC?style=for-the-badge&logo=recoil&logoColor=white">
-<img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white">
-<img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=white">
+
 <br />
 <br />
 <h4>Backend</h4>
@@ -83,11 +81,12 @@
 
 <h2>Member</h2>
 
-| Name | 박진우 | 황승기 | 신윤정 | 최세엽 | 지영란 | 박주한 | 안나경 |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Profile | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> |
-| Position | Leader<br />Backend | Backend | Backend | Backend<br />DevOps | Backend | Frontend | Frontend |
-| Github | [@nagosu](https://github.com/nagosu) | [@Seungkiii](https://github.com/Seungkiii) | [@syxxnjeong](https://github.com/syxxnjeong) | [@non-cpu](https://github.com/non-cpu) | [@Iana74](https://github.com/Iana74) | [@Juice-Han](https://github.com/Juice-Han) | [@Ahnnakyung](https://github.com/Ahnnakyung) |
+| Name | 박진우 | 황승기 | 신윤정 | 최세엽 | 지영란 | 박주한 | 안나경 | [새 이름] |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Profile | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> |
+| Position | Leader<br />Backend | Backend | Backend | Backend<br />DevOps | Backend | Frontend | Frontend | [새 포지션] |
+| Github | [@nagosu](https://github.com/nagosu) | [@Seungkiii](https://github.com/Seungkiii) | [@syxxnjeong](https://github.com/syxxnjeong) | [@non-cpu](https://github.com/non-cpu) | [@Iana74](https://github.com/Iana74) | [@Juice-Han](https://github.com/Juice-Han) | [@Ahnnakyung](https://github.com/Ahnnakyung) | [@Github] |
+
 
 <br />
 <br />
