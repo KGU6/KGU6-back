@@ -1,17 +1,22 @@
 package com.kakaogroom6.server.domain.profile.service;
 
+import com.kakaogroom6.server.domain.image.service.S3Service;
 import com.kakaogroom6.server.domain.member.entity.MemberEntity;
 import com.kakaogroom6.server.domain.member.repository.MemberRepository;
-import com.kakaogroom6.server.domain.place.entity.PlaceEntity;
 import com.kakaogroom6.server.domain.place.repository.PlaceRepository;
 import com.kakaogroom6.server.domain.travelog.entity.TravelogEntity;
 import com.kakaogroom6.server.domain.profile.dto.res.ProfileResponseDto;
 import com.kakaogroom6.server.domain.travelog.dto.res.TravelogSummaryDto;
 import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
+import com.kakaogroom6.server.global.errors.code.CommonErrorCode;
+import com.kakaogroom6.server.global.errors.exception.RestApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,15 +24,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ProfileService {
 
-    private final MemberRepository userRepository;
-    private final TravelogRepository travelogRepository;
+    private final MemberRepository memberRepository;
+    private final TravelogRepository  travelogRepository;
     private final PlaceRepository placeRepository;
+    private final S3Service s3Service;
 
     @Transactional
     public ProfileResponseDto getProfile(String email) {
         // 맴버 객체 불러오기(맴버 이름, 맴버 프로필 사진 url)
-        MemberEntity member = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("No Member Found"));
+        MemberEntity member = memberRepository.findByEmail(email)
+                .orElseThrow(() -> new RestApiException(CommonErrorCode.MEMBER_NOT_FOUND));
 
         // 해당 맴버의 트래블로그들 불러오기(해당 맴버의 아이디를 통해, 그 아이디로 등록되어 있는 트래블로그 불러옴)
         List<TravelogEntity> travelogs = travelogRepository.findByMemberId(member.getId())
@@ -52,16 +58,32 @@ public class ProfileService {
         );
     }
 
+//    public boolean uploadProfile(String email, MultipartFile profileImage) throws IOException {
+//
+//        MemberEntity member = memberRepository.findByEmail(email)
+//                .orElseThrow(() -> new RestApiException(CommonErrorCode.MEMBER_NOT_FOUND));
+//
+//        try{
+//            String profileImageUrl = s3Service.saveProfileImg(profileImage, member.getId());
+//            member.setProfileUrl(profileImageUrl);
+//            memberRepository.save(member);
+//        }catch(IOException e){
+//            throw new RestApiException(CommonErrorCode.IO_EXCEPTION_ON_IMAGE_UPLOAD);
+//        }
+//
+//        return true;
+//    }
+
     private TravelogSummaryDto convertToSummaryDto(TravelogEntity travelog) {
-        PlaceEntity firstPlace = placeRepository.findFirstByTravelogId(travelog.getId())
-                .orElseThrow(null);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = travelog.getCreatedAt().format(formatter);
 
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                firstPlace != null ? firstPlace.getImageUrl() : null, // TODO 대표이미지로 교체
-                firstPlace != null ? firstPlace.getName() : null,
+                travelog.getMainImage(),
+                travelog.getMainPlace(),
                 travelog.getTitle(),
-                travelog.getCreatedAt()
+                formattedDate
         );
     }
 }

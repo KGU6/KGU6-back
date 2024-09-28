@@ -7,6 +7,7 @@ import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,9 +20,11 @@ public class TravelogService {
     public TravelogsResponseDto getAllTravelogs(String sortBy) {
         List<TravelogEntity> travelogs;
         if ("likes".equalsIgnoreCase(sortBy)) {
-            travelogs = travelogRepository.findAllByOrderByLikesDesc();
+            travelogs = travelogRepository.findAllByOrderByCreatedAtDesc()
+                    .orElse(List.of());
         } else {
-            travelogs = travelogRepository.findAllByOrderByLikesDesc();
+            travelogs = travelogRepository.findAllByOrderByLikesDesc()
+                    .orElse(List.of());
         }
 
         List<TravelogSummaryDto> travelogSummarys = travelogs.stream()
@@ -31,12 +34,14 @@ public class TravelogService {
         return new TravelogsResponseDto(travelogSummarys, travelogSummarys.size());
     }
 
-    public TravelogsResponseDto searchTravelogs(String keyword, String sortBy) {
+    public TravelogsResponseDto searchTravelogs(String location, String sortBy) {
         List<TravelogEntity> travelogs;
         if ("likes".equalsIgnoreCase(sortBy)) {
-            travelogs = travelogRepository.findByTitleContainingOrderByLikesDesc(keyword);
+            travelogs = travelogRepository.findByTitleContainingOrderByLikesDesc(location)
+                    .orElse(List.of());
         } else {
-            travelogs = travelogRepository.findByTitleContainingOrderByCreatedAtDesc(keyword);
+            travelogs = travelogRepository.findByTitleContainingOrderByCreatedAtDesc(location)
+                    .orElse(List.of());
         }
 
         List<TravelogSummaryDto> travelogSummarys = travelogs.stream()
@@ -47,12 +52,15 @@ public class TravelogService {
     }
 
     private TravelogSummaryDto convertToSummaryDto(TravelogEntity travelog) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = travelog.getCreatedAt().format(formatter);
+
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                "", // 메인 이미지 URL (엔티티에 없음)
-                "", // 장소 이름 (엔티티에 없음)
+                travelog.getMainImage(),
+                travelog.getMainPlace(),
                 travelog.getTitle(),
-                travelog.getCreatedAt()
+                formattedDate
         );
     }
 }

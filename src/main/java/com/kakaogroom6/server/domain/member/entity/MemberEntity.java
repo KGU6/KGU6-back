@@ -2,11 +2,12 @@ package com.kakaogroom6.server.domain.member.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Getter
+@Getter@Setter
 @Table(name = "member")
 public class MemberEntity {
 

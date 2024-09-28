@@ -10,9 +10,10 @@ import java.util.Optional;
 @Repository
 public interface TravelogRepository extends JpaRepository<TravelogEntity, Long> {
     Optional<List<TravelogEntity>> findByMemberId(Long memberId);
+    Optional<List<TravelogEntity>> findAllByOrderByCreatedAtDesc();
+    Optional<List<TravelogEntity>> findAllByOrderByLikesDesc();
 
-    List<TravelogEntity> findAllByOrderByCreatedAtDesc();
-    List<TravelogEntity> findAllByOrderByLikesDesc();
-    List<TravelogEntity> findByTitleContainingOrderByCreatedAtDesc(String keyword);
-    List<TravelogEntity> findByTitleContainingOrderByLikesDesc(String keyword);
+    // TODO JPA Title -> 장소 프로퍼티명 반영해야함!!
+    Optional<List<TravelogEntity>> findByTitleContainingOrderByCreatedAtDesc(String location);
+    Optional<List<TravelogEntity>> findByTitleContainingOrderByLikesDesc(String location);
 }
