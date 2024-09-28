@@ -15,11 +15,16 @@ public interface TravelogRepository extends JpaRepository<TravelogEntity, Long> 
     Optional<List<TravelogEntity>> findAllByOrderByCreatedAtDesc();
     Optional<List<TravelogEntity>> findAllByOrderByLikesDesc();
 
+
     Optional<List<TravelogEntity>> findAllByTitleContainingOrderByCreatedAtDesc(String location);
     Optional<List<TravelogEntity>> findAllByTitleContainingOrderByLikesDesc(String location);
 
     @Query("SELECT t FROM TravelogEntity t WHERE t.id IN " +
             "(SELECT k.travelogEntity.id FROM KewordEntity k WHERE k.name LIKE %:keyword%)")
     List<TravelogEntity> findByKeyword(@Param("keyword") String keyword);
+
+
+    Optional<List<TravelogEntity>> findAllByMainPlaceContainingOrderByCreatedAtDesc(String mainPlace);
+    Optional<List<TravelogEntity>> findAllByMainPlaceContainingOrderByLikesDesc(String mainPlace);
 
 }

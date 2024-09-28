@@ -8,6 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetOneKeywordResponseDTO {
-
     private String name;
 }
