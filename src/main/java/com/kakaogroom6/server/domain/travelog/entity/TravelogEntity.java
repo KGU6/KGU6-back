@@ -29,6 +29,9 @@ public class TravelogEntity extends BaseEntity {
     private Integer likes;
     private String imageurl;
 
+    private String mainImage;
+    private String mainPlace;
+
     public void setDetails(String title, LocalDate startDate, LocalDate endDate, MemberEntity member) {
         this.title = title;
         this.startDate = startDate;
