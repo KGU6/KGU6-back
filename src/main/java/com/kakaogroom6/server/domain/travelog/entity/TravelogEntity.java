@@ -27,9 +27,9 @@ public class TravelogEntity extends BaseEntity {
     private LocalDate startDate;
     private LocalDate endDate;
     private Integer likes;
-    private String imageurl;
 
-    private String mainImage;
+    @Column(length = 500)
+    private String imageurl;
     private String mainPlace;
 
     public void setDetails(String title, LocalDate startDate, LocalDate endDate, MemberEntity member) {

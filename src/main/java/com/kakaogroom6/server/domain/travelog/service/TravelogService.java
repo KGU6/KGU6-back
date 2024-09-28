@@ -75,7 +75,7 @@ public class TravelogService {
 
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                travelog.getMainImage(),
+                travelog.getImageurl(),
                 travelog.getMainPlace(),
                 travelog.getTitle(),
                 formattedDate
