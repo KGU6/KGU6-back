@@ -5,7 +5,6 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.kakaogroom6.server.domain.comment.dto.req.CommentRequestDto;
 import com.kakaogroom6.server.domain.comment.dto.res.CommentResponseDto;
 import com.kakaogroom6.server.domain.comment.service.CommentService;
-import com.kakaogroom6.server.domain.travelog.dto.request.CreateOnePlaceRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.CreateTravelogRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.FirstTravelRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.CreateTravelogResponseDTO;

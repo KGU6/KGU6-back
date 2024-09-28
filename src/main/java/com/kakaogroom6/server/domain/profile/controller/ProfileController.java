@@ -20,13 +20,4 @@ public class ProfileController {
     public ProfileResponseDto getMember(@CookieValue(name = "email", required = true)String email){
         return profileService.getProfile(email);
     }
-
-//    @PostMapping("/image")
-//    public ResponseEntity<?> uploadProfileImage(
-//            @CookieValue(name = "email", required = true)String email,
-//            MultipartFile multipartFile) throws IOException {
-//        boolean response = profileService.uploadProfile(email, multipartFile);
-//        return ResponseEntity.ok(response);
-//    }
-
 }
