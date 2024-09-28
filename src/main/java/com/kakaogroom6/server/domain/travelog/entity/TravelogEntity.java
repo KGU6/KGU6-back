@@ -32,10 +32,11 @@ public class TravelogEntity extends BaseEntity {
     private String imageurl;
     private String mainPlace;
 
-    public void setDetails(String title, LocalDate startDate, LocalDate endDate, MemberEntity member) {
+    public void setDetails(String title, LocalDate startDate, LocalDate endDate, MemberEntity member, String mainPlace) {
         this.title = title;
         this.startDate = startDate;
         this.endDate = endDate;
         this.member = member;
+        this.mainPlace = mainPlace;
     }
 }

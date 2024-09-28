@@ -92,7 +92,7 @@ public class TravelogService {
 
         // 여행기 엔티티 생성
         TravelogEntity travelog = new TravelogEntity();
-        travelog.setDetails(request.getTitle(), request.getStartDate(), request.getEndDate(), member);
+        travelog.setDetails(request.getTitle(), request.getStartDate(), request.getEndDate(), member, request.getMainPlace());
 
         System.out.println("image status"+requestDTO.getMainImage());
 
