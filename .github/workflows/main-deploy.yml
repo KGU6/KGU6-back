@@ -80,7 +80,7 @@ jobs:
               echo "[ spring is not running ]"
             fi
             
-            docker run -d --name server -p 443:8080 ${{ secrets.DOCKER_USERNAME }}/server
+            docker run -d --name server -p 80:8080 ${{ secrets.DOCKER_USERNAME }}/server
   result:
     name: Send notification
     needs: [build, deploy]
