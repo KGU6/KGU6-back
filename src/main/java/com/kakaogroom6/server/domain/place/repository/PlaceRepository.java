@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface PlaceRepository extends JpaRepository<PlaceEntity, Long> {
     Optional<PlaceEntity> findFirstByTravelogId(Long travelogId);
     int countByTravelogIdIn(List<Long> travelogIds);
+    List<PlaceEntity> findByTravelogId(Long travelogId);
 }

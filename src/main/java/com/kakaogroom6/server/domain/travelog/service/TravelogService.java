@@ -10,17 +10,13 @@ import com.kakaogroom6.server.domain.place.repository.PlaceRepository;
 import com.kakaogroom6.server.domain.travelog.dto.request.CreateOnePlaceRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.CreateTravelogRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.FirstTravelRequestDTO;
-import com.kakaogroom6.server.domain.travelog.dto.response.CreateTravelogResponseDTO;
+import com.kakaogroom6.server.domain.travelog.dto.response.*;
 import com.kakaogroom6.server.domain.travelog.entity.TravelogEntity;
-import com.kakaogroom6.server.domain.travelog.dto.response.TravelogSummaryDto;
-import com.kakaogroom6.server.domain.travelog.dto.response.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -104,7 +100,6 @@ public class TravelogService {
         saveKeywords(request.getKeywords(), savedTravelog);
 
         // 장소 저장
-        System.out.println("PlaceContent created: " + request.getPlaceContent());
         savePlaces(request.getPlaceContent(), savedTravelog);
 
         return CreateTravelogResponseDTO.builder()
@@ -139,6 +134,54 @@ public class TravelogService {
                 placeRepository.save(placeEntity);
             }
         }
+    }
+
+
+    // 여행기 상세 조회
+    public GetTravelogDetaiResponselDTO getTravelogDetail(Long travelogId) {
+        TravelogEntity travelog = travelogRepository.findById(travelogId)
+                .orElseThrow(() -> new IllegalArgumentException("Travelog not found"));
+
+        GetTravelogDetaiResponselDTO responseDTO = new GetTravelogDetaiResponselDTO();
+        responseDTO.setTitle(travelog.getTitle());
+        responseDTO.setStartDate(travelog.getStartDate());
+        responseDTO.setEndDate(travelog.getEndDate());
+        responseDTO.setMemberName(travelog.getMember().getName());
+        responseDTO.setCreatedAt(travelog.getCreatedAt());
+
+        // 키워드 조회
+        List<String> keywords = getTravelogKeywords(travelogId);
+        responseDTO.setKeywords(keywords);
+
+        // 장소 정보를 가져오기
+        List<GetOnePlaceResposeDTO> placeContent = placeRepository.findByTravelogId(travelogId)
+                .stream()
+                .map(this::convertPlaceToDTO)
+                .collect(Collectors.toList());
+        responseDTO.setPlaceContent(placeContent);
+
+        responseDTO.setLikes(travelog.getLikes() == null ? 0 : travelog.getLikes());
+
+        return responseDTO;
+    }
+
+    // 장소 DTO 변환 메소드
+    private GetOnePlaceResposeDTO convertPlaceToDTO(PlaceEntity place) {
+        GetOnePlaceResposeDTO dto = new GetOnePlaceResposeDTO();
+        dto.setPlaceName(place.getName());
+        dto.setContent(place.getContent());
+        dto.setCloud(place.getCloud());
+        dto.setLat(place.getLat());
+        dto.setLng(place.getLng());
+        return dto;
+    }
+
+    // 키워드 변환 메소드
+    private List<String> getTravelogKeywords(Long travelogId) {
+        List<KewordEntity> keywords = kewordRepository.findByTravelogEntityId(travelogId);
+        return keywords.stream()
+                .map(KewordEntity::getName) // 키워드 엔티티에서 이름만 가져오기
+                .collect(Collectors.toList());
     }
 
 }
