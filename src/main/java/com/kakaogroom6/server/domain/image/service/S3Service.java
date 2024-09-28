@@ -31,6 +31,7 @@ public class S3Service {
 
     private String PROFILE_IMG_DIR = "profile/";
     private String MEMBER_IMG_DIR = "member/";
+
     public String savePhoto(MultipartFile multipartFile, Long memberId) throws IOException {
         File uploadFile = convert(multipartFile)  // 파일 변환할 수 없으면 에러
                 .orElseThrow(() -> new IllegalArgumentException("error: MultipartFile -> File convert fail"));
@@ -67,17 +68,28 @@ public class S3Service {
         log.info("File delete fail");
     }
 
-    // 로컬에 파일 업로드 하기
-    private Optional<File> convert(MultipartFile file) throws IOException {
-        File convertFile = new File(System.getProperty("user.home") + "/" + file.getOriginalFilename());
-        if (convertFile.createNewFile()) { // 바로 위에서 지정한 경로에 File이 생성됨 (경로가 잘못되었다면 생성 불가능)
-            try (FileOutputStream fos = new FileOutputStream(convertFile)) { // FileOutputStream 데이터를 파일에 바이트 스트림으로 저장하기 위함
-                fos.write(file.getBytes());
+    private Optional<File> convert(MultipartFile file) {
+        if (file.isEmpty() || file.getOriginalFilename() == null) {
+            log.error("File is empty or filename is null");
+            return Optional.empty();
+        }
+
+        try {
+            File convertFile = new File(System.getProperty("java.io.tmpdir") + "/" + UUID.randomUUID() + "_" + file.getOriginalFilename());
+            if (convertFile.createNewFile()) {
+                try (FileOutputStream fos = new FileOutputStream(convertFile)) {
+                    fos.write(file.getBytes());
+                }
+                return Optional.of(convertFile);
+            } else {
+                log.error("File already exists: {}", convertFile.getAbsolutePath());
             }
-            return Optional.of(convertFile);
+        } catch (IOException e) {
+            log.error("File conversion failed: {}", e.getMessage());
         }
         return Optional.empty();
     }
+
 
     public void createDir(String bucketName, String folderName) {
         amazonS3Client.putObject(bucketName, folderName + "/", new ByteArrayInputStream(new byte[0]), new ObjectMetadata());

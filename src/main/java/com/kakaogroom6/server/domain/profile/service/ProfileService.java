@@ -6,7 +6,7 @@ import com.kakaogroom6.server.domain.place.entity.PlaceEntity;
 import com.kakaogroom6.server.domain.place.repository.PlaceRepository;
 import com.kakaogroom6.server.domain.travelog.entity.TravelogEntity;
 import com.kakaogroom6.server.domain.profile.dto.res.ProfileResponseDto;
-import com.kakaogroom6.server.domain.travelog.dto.res.TravelogSummaryDto;
+import com.kakaogroom6.server.domain.travelog.dto.response.TravelogSummaryDto;
 import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -58,7 +58,7 @@ public class ProfileService {
 
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                firstPlace != null ? firstPlace.getImageUrl() : null, // TODO 대표이미지로 교체
+                firstPlace != null ? firstPlace.getName() : null, // TODO 대표이미지로 교체
                 firstPlace != null ? firstPlace.getName() : null,
                 travelog.getTitle(),
                 travelog.getCreatedAt()
