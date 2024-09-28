@@ -76,10 +76,9 @@
 
 <h2>Member</h2>
 
-| Name | 박진우 | 황승기 | 신윤정 | 최세엽 | 지영란 | 박주한 | 안나경 | [새 이름] |
+| Name | 김민상 | 김가연 | 이준석 | 김다은 | 백지웅 | 이승원 | 황승기 | 한준서 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Profile | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> |
-| Position | Leader<br />Backend | Backend | Backend | Backend<br />DevOps | Backend | Frontend | Frontend | [새 포지션] |
+| Position | PM | Designer | FE | FE | FE | BE | BE | BE |
 | Github | [@nagosu](https://github.com/nagosu) | [@Seungkiii](https://github.com/Seungkiii) | [@syxxnjeong](https://github.com/syxxnjeong) | [@non-cpu](https://github.com/non-cpu) | [@Iana74](https://github.com/Iana74) | [@Juice-Han](https://github.com/Juice-Han) | [@Ahnnakyung](https://github.com/Ahnnakyung) | [@Github] |
 
 
