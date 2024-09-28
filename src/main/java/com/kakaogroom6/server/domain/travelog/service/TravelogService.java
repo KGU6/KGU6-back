@@ -55,10 +55,10 @@ public class TravelogService {
     public TravelogsResponseDto searchTravelogs(String location, String sortBy) {
         List<TravelogEntity> travelogs;
         if ("likes".equalsIgnoreCase(sortBy)) {
-            travelogs = travelogRepository.findByTitleContainingOrderByLikesDesc(location)
+            travelogs = travelogRepository.findAllByTitleContainingOrderByLikesDesc(location)
                     .orElse(List.of());
         } else {
-            travelogs = travelogRepository.findByTitleContainingOrderByCreatedAtDesc(location)
+            travelogs = travelogRepository.findAllByTitleContainingOrderByCreatedAtDesc(location)
                     .orElse(List.of());
         }
 
@@ -68,6 +68,8 @@ public class TravelogService {
 
         return new TravelogsResponseDto(travelogSummarys, travelogSummarys.size());
     }
+
+//    public List<TravelogSummaryDto>
 
     private TravelogSummaryDto convertToSummaryDto(TravelogEntity travelog) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -133,7 +135,6 @@ public class TravelogService {
 
     private void savePlaces(List<CreateOnePlaceRequestDTO> places, TravelogEntity travelog) {
         if (places != null) {
-
             for (CreateOnePlaceRequestDTO place : places) {
                 PlaceEntity placeEntity = new PlaceEntity();
                 placeEntity.setDetails(
