@@ -2,16 +2,23 @@ package com.kakaogroom6.server.domain.travelog.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.kakaogroom6.server.domain.comment.dto.req.CommentRequestDto;
+import com.kakaogroom6.server.domain.comment.dto.res.CommentResponseDto;
+import com.kakaogroom6.server.domain.comment.service.CommentService;
+import com.kakaogroom6.server.domain.travelog.dto.request.CreateOnePlaceRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.CreateTravelogRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.FirstTravelRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.CreateTravelogResponseDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.GetTravelogDetaiResponselDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.service.TravelogService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class TravelogController {
 
     private final TravelogService travelogService;
+    private final CommentService commentService;
 
     @GetMapping
     public ResponseEntity<TravelogsResponseDto> getAllTravelogs(
@@ -34,7 +42,6 @@ public class TravelogController {
         TravelogsResponseDto response = travelogService.searchTravelogs(keyword, sortBy);
         return ResponseEntity.ok(response);
     }
-
 
     // 여행기 등록
     @PostMapping("/")
@@ -65,9 +72,26 @@ public class TravelogController {
         return ResponseEntity.ok(response);
     }
 
+    @PostMapping("/comment")
+    public ResponseEntity<?> addComment(
+            @CookieValue(name = "email", required = true)String email,
+            @Valid @RequestBody CommentRequestDto request){
+        boolean response = commentService.saveComment(email, request);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/comment/{travelogId}")
+    public ResponseEntity<List<CommentResponseDto>> getComments(
+            @PathVariable Long travelogId){
+        List<CommentResponseDto> response = commentService.getComment(travelogId);
+        return ResponseEntity.ok(response);
+    }
+
+
     @GetMapping("/{travelogId}")
     public ResponseEntity<GetTravelogDetaiResponselDTO> getTravelogDetail(@PathVariable Long travelogId) {
         GetTravelogDetaiResponselDTO travelogDetail = travelogService.getTravelogDetail(travelogId);
         return ResponseEntity.ok(travelogDetail);
     }
+
 }

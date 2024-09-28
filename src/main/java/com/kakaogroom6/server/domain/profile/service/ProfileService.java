@@ -73,7 +73,7 @@ public class ProfileService {
 //    }
 
     private TravelogSummaryDto convertToSummaryDto(TravelogEntity travelog) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy.MM.dd");
         String formattedDate = travelog.getCreatedAt().format(formatter);
 
         return new TravelogSummaryDto(

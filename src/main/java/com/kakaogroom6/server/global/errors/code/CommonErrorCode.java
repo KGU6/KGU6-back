@@ -19,7 +19,12 @@ public enum CommonErrorCode implements ErrorCode {
     PUT_OBJECT_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, 500, "Failed to upload the image to S3."),
     IO_EXCEPTION_ON_IMAGE_DELETE(HttpStatus.INTERNAL_SERVER_ERROR, 500, "An I/O error occurred while deleting the image from S3."),
 
-    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Member not found")
+    // Member
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Member not found"),
+    MEMBER_NOT_FOUND_AT_COMMENT(HttpStatus.NOT_FOUND, 404, "Member not found for Comment"),
+
+    // Travelog
+    TRAVELOG_NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Travelog not found")
     ;
 
     private final HttpStatus httpStatus;
