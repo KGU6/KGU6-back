@@ -85,7 +85,7 @@
 
 | Name | 박진우 | 황승기 | 신윤정 | 최세엽 | 지영란 | 박주한 | 안나경 |
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Profile | <img src="https://ifh.cc/g/NKwSdj.jpg"/> | <img src="https://ifh.cc/g/kVOK2d.jpg"/> | <img src="https://ifh.cc/g/woQK1l.jpg"/> | <img src="https://ifh.cc/g/rDcwL9.jpg"/> | <img src="https://ifh.cc/g/LtKW30.jpg"/> | <img src="https://ifh.cc/g/sjvM84.jpg"/> | <img src="https://ifh.cc/g/DYnSmx.jpg"/> |
+| Profile | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> | <img src=""/> |
 | Position | Leader<br />Backend | Backend | Backend | Backend<br />DevOps | Backend | Frontend | Frontend |
 | Github | [@nagosu](https://github.com/nagosu) | [@Seungkiii](https://github.com/Seungkiii) | [@syxxnjeong](https://github.com/syxxnjeong) | [@non-cpu](https://github.com/non-cpu) | [@Iana74](https://github.com/Iana74) | [@Juice-Han](https://github.com/Juice-Han) | [@Ahnnakyung](https://github.com/Ahnnakyung) |
 
