@@ -4,10 +4,7 @@ import com.kakaogroom6.server.domain.travelog.dto.res.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.service.TravelogService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,4 +27,11 @@ public class TravelogController {
         TravelogsResponseDto response = travelogService.searchTravelogs(keyword, sortBy);
         return ResponseEntity.ok(response);
     }
+
+    // 여행기 등록
+//    @PostMapping("/")
+//    public ResponseEntity<CreateTravelogResponseDTO> createtravelog(@RequestBody CreateTravelogRequestDTO request) {
+//        CreateTravelogResponseDTO response = travelogService.createTravelog(request);
+//        return ResponseEntity.ok(response);
+//    }
 }
