@@ -8,6 +8,8 @@ import com.kakaogroom6.server.domain.travelog.entity.TravelogEntity;
 import com.kakaogroom6.server.domain.profile.dto.res.ProfileResponseDto;
 import com.kakaogroom6.server.domain.travelog.dto.res.TravelogSummaryDto;
 import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
+import com.kakaogroom6.server.global.errors.code.CommonErrorCode;
+import com.kakaogroom6.server.global.errors.exception.RestApiException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,7 +29,7 @@ public class ProfileService {
     public ProfileResponseDto getProfile(String email) {
         // 맴버 객체 불러오기(맴버 이름, 맴버 프로필 사진 url)
         MemberEntity member = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("No Member Found"));
+                .orElseThrow(() -> new RestApiException(CommonErrorCode.MEMBER_NOT_FOUND));
 
         // 해당 맴버의 트래블로그들 불러오기(해당 맴버의 아이디를 통해, 그 아이디로 등록되어 있는 트래블로그 불러옴)
         List<TravelogEntity> travelogs = travelogRepository.findByMemberId(member.getId())
@@ -58,7 +60,7 @@ public class ProfileService {
 
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                firstPlace != null ? firstPlace.getImageUrl() : null, // TODO 대표이미지로 교체
+                travelog.getMainImageUrl(),
                 firstPlace != null ? firstPlace.getName() : null,
                 travelog.getTitle(),
                 travelog.getCreatedAt()

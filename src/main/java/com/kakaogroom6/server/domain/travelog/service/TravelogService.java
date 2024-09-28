@@ -19,9 +19,11 @@ public class TravelogService {
     public TravelogsResponseDto getAllTravelogs(String sortBy) {
         List<TravelogEntity> travelogs;
         if ("likes".equalsIgnoreCase(sortBy)) {
-            travelogs = travelogRepository.findAllByOrderByLikesDesc();
+            travelogs = travelogRepository.findAllByOrderByLikesDesc()
+                    .orElse(List.of());
         } else {
-            travelogs = travelogRepository.findAllByOrderByLikesDesc();
+            travelogs = travelogRepository.findAllByOrderByCreatedAtDesc()
+                    .orElse(List.of());
         }
 
         List<TravelogSummaryDto> travelogSummarys = travelogs.stream()
@@ -34,9 +36,11 @@ public class TravelogService {
     public TravelogsResponseDto searchTravelogs(String keyword, String sortBy) {
         List<TravelogEntity> travelogs;
         if ("likes".equalsIgnoreCase(sortBy)) {
-            travelogs = travelogRepository.findByTitleContainingOrderByLikesDesc(keyword);
+            travelogs = travelogRepository.findByTitleContainingOrderByLikesDesc(keyword)
+                    .orElse(List.of());
         } else {
-            travelogs = travelogRepository.findByTitleContainingOrderByCreatedAtDesc(keyword);
+            travelogs = travelogRepository.findByTitleContainingOrderByCreatedAtDesc(keyword)
+                    .orElse(List.of());
         }
 
         List<TravelogSummaryDto> travelogSummarys = travelogs.stream()
@@ -47,10 +51,11 @@ public class TravelogService {
     }
 
     private TravelogSummaryDto convertToSummaryDto(TravelogEntity travelog) {
+
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                "", // 메인 이미지 URL (엔티티에 없음)
-                "", // 장소 이름 (엔티티에 없음)
+                travelog.getMainImageUrl(),
+                firstPlace != null ? firstPlace.getName() : null,
                 travelog.getTitle(),
                 travelog.getCreatedAt()
         );

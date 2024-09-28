@@ -18,6 +18,9 @@ public enum CommonErrorCode implements ErrorCode {
     INVALID_FILE_EXTENTION(HttpStatus.BAD_REQUEST, 400, "The file extension is invalid. Only jpg, jpeg, png, gif are allowed."),
     PUT_OBJECT_EXCEPTION(HttpStatus.INTERNAL_SERVER_ERROR, 500, "Failed to upload the image to S3."),
     IO_EXCEPTION_ON_IMAGE_DELETE(HttpStatus.INTERNAL_SERVER_ERROR, 500, "An I/O error occurred while deleting the image from S3."),
+
+    // Member
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, 404, "Member not found")
     ;
 
     private final HttpStatus httpStatus;

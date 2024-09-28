@@ -11,8 +11,8 @@ import java.util.Optional;
 public interface TravelogRepository extends JpaRepository<TravelogEntity, Long> {
     Optional<List<TravelogEntity>> findByMemberId(Long memberId);
 
-    List<TravelogEntity> findAllByOrderByCreatedAtDesc();
-    List<TravelogEntity> findAllByOrderByLikesDesc();
-    List<TravelogEntity> findByTitleContainingOrderByCreatedAtDesc(String keyword);
-    List<TravelogEntity> findByTitleContainingOrderByLikesDesc(String keyword);
+    Optional<List<TravelogEntity>> findAllByOrderByCreatedAtDesc();
+    Optional<List<TravelogEntity>> findAllByOrderByLikesDesc();
+    Optional<List<TravelogEntity>> findByTitleContainingOrderByCreatedAtDesc(String keyword);
+    Optional<List<TravelogEntity>> findByTitleContainingOrderByLikesDesc(String keyword);
 }

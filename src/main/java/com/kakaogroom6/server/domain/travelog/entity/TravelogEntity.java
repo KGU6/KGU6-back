@@ -26,6 +26,8 @@ public class TravelogEntity {
     private LocalDate endDate;
     private Integer likes;
 
+    private String mainImageUrl;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
