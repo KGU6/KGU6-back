@@ -78,7 +78,7 @@ public class ProfileService {
 
         return new TravelogSummaryDto(
                 travelog.getMember().getName(),
-                travelog.getMainImage(),
+                travelog.getImageurl(),
                 travelog.getMainPlace(),
                 travelog.getTitle(),
                 formattedDate
