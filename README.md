@@ -1,5 +1,5 @@
 <h3>2024 9oorm United Heckerthon</h3>
-<img src="https://velog.velcdn.com/images/tmdrl7777/post/6bebc32f-90bc-4498-b220-b28a213ed0a1/image.png"/>
+<img src="https://github.com/user-attachments/assets/3870df1b-1341-4116-bbee-ac0e31845da7"/>
 
 <br>
 <br>
