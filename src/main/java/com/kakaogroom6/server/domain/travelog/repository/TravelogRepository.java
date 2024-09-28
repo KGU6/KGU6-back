@@ -13,7 +13,7 @@ public interface TravelogRepository extends JpaRepository<TravelogEntity, Long> 
     Optional<List<TravelogEntity>> findAllByOrderByCreatedAtDesc();
     Optional<List<TravelogEntity>> findAllByOrderByLikesDesc();
 
-    // TODO JPA Title -> 장소 프로퍼티명 반영해야함!!
     Optional<List<TravelogEntity>> findByTitleContainingOrderByCreatedAtDesc(String location);
     Optional<List<TravelogEntity>> findByTitleContainingOrderByLikesDesc(String location);
+
 }

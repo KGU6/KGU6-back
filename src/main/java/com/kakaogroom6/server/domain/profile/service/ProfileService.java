@@ -6,7 +6,7 @@ import com.kakaogroom6.server.domain.member.repository.MemberRepository;
 import com.kakaogroom6.server.domain.place.repository.PlaceRepository;
 import com.kakaogroom6.server.domain.travelog.entity.TravelogEntity;
 import com.kakaogroom6.server.domain.profile.dto.res.ProfileResponseDto;
-import com.kakaogroom6.server.domain.travelog.dto.res.TravelogSummaryDto;
+import com.kakaogroom6.server.domain.travelog.dto.response.TravelogSummaryDto;
 import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import com.kakaogroom6.server.global.errors.code.CommonErrorCode;
 import com.kakaogroom6.server.global.errors.exception.RestApiException;

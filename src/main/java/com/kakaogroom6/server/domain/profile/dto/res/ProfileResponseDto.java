@@ -1,6 +1,6 @@
 package com.kakaogroom6.server.domain.profile.dto.res;
 
-import com.kakaogroom6.server.domain.travelog.dto.res.TravelogSummaryDto;
+import com.kakaogroom6.server.domain.travelog.dto.response.TravelogSummaryDto;
 import lombok.*;
 
 import java.util.List;
