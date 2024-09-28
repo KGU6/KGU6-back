@@ -13,8 +13,7 @@
 <br />
 
 <h2>🗝️ ERD</h2>
-<img src="https://velog.velcdn.com/images/tmdrl7777/post/ab32ea49-08e8-42f9-bb93-678ed43eeed0/image.png
-"/>
+<img src="https://github.com/user-attachments/assets/1384ffdf-cb35-49ed-81f5-690374545625"/>
 <br />
 <br />
 
