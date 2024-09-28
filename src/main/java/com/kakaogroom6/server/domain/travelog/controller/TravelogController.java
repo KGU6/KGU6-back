@@ -39,13 +39,13 @@ public class TravelogController {
     // 여행기 등록
     @PostMapping("/")
     public ResponseEntity<CreateTravelogResponseDTO> createTravelog(
-            @RequestPart(value = "mainImage") MultipartFile mainImage,
+            @RequestPart(value = "mainImage",required = false) MultipartFile mainImage,
             @RequestPart("travelog") String travelogJson,
             @RequestParam("email") String email
     ) {
 
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());  // LocalDate 처리 가능
+        objectMapper.registerModule(new JavaTimeModule());
 
         // travelogJson 파싱
         CreateTravelogRequestDTO request;
@@ -56,7 +56,6 @@ public class TravelogController {
             throw new RuntimeException("Invalid JSON format for travelog data.");
         }
 
-        // FirstTravelRequestDTO 생성 및 이메일과 이미지 설정
         FirstTravelRequestDTO requestDTO = new FirstTravelRequestDTO();
         requestDTO.setMainImage(mainImage);
         requestDTO.setEmail(email);

@@ -96,13 +96,20 @@ public class TravelogService {
         TravelogEntity travelog = new TravelogEntity();
         travelog.setDetails(request.getTitle(), request.getStartDate(), request.getEndDate(), member);
 
-        if (requestDTO.getMainImage() != null) {
+        System.out.println("image status"+requestDTO.getMainImage());
+
+        // 메인 이미지 설정
+        if (requestDTO.getMainImage() != null && !requestDTO.getMainImage().isEmpty()) {
             try {
                 String mainImageUrl = s3Service.savePhoto(requestDTO.getMainImage(), member.getId());
-                travelog.setImageurl(mainImageUrl); // 이미지를 클라우드 타입으로 설정 (필요시 수정)
+                travelog.setImageurl(mainImageUrl); // 업로드된 이미지 URL 저장
             } catch (IOException e) {
                 throw new RuntimeException("Failed to upload main image", e);
             }
+        } else {
+            // 기본 이미지 설정 (S3의 기본 이미지 URL)
+            String defaultImageUrl = "https://s3.amazonaws.com/yourbucket/default-image.png";
+            travelog.setImageurl(defaultImageUrl); // 기본 이미지 URL 저장
         }
 
         // 여행기 저장
