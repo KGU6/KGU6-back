@@ -16,11 +16,9 @@ import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-
 import java.time.format.DateTimeFormatter;
 
 import java.io.IOException;
-
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -52,13 +50,13 @@ public class TravelogService {
         return new TravelogsResponseDto(travelogSummarys, travelogSummarys.size());
     }
 
-    public TravelogsResponseDto searchTravelogs(String location, String sortBy) {
+    public TravelogsResponseDto searchTravelogs(String mainPlace, String sortBy) {
         List<TravelogEntity> travelogs;
         if ("likes".equalsIgnoreCase(sortBy)) {
-            travelogs = travelogRepository.findAllByTitleContainingOrderByLikesDesc(location)
+            travelogs = travelogRepository.findAllByMainPlaceContainingOrderByLikesDesc(mainPlace)
                     .orElse(List.of());
         } else {
-            travelogs = travelogRepository.findAllByTitleContainingOrderByCreatedAtDesc(location)
+            travelogs = travelogRepository.findAllByMainPlaceContainingOrderByCreatedAtDesc(mainPlace)
                     .orElse(List.of());
         }
 
@@ -68,8 +66,6 @@ public class TravelogService {
 
         return new TravelogsResponseDto(travelogSummarys, travelogSummarys.size());
     }
-
-//    public List<TravelogSummaryDto>
 
     private TravelogSummaryDto convertToSummaryDto(TravelogEntity travelog) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
