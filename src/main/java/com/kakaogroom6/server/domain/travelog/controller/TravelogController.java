@@ -14,6 +14,7 @@ import com.kakaogroom6.server.domain.travelog.dto.response.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.service.TravelogService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -48,7 +49,7 @@ public class TravelogController {
     public ResponseEntity<CreateTravelogResponseDTO> createTravelog(
             @RequestPart(value = "mainImage",required = false) MultipartFile mainImage,
             @RequestPart("travelog") String travelogJson,
-            @RequestParam("email") String email
+            @Value("${security.email}") String email
     ) {
 
         ObjectMapper objectMapper = new ObjectMapper();
@@ -74,7 +75,7 @@ public class TravelogController {
 
     @PostMapping("/comment")
     public ResponseEntity<?> addComment(
-            @CookieValue(name = "email", required = true)String email,
+            @Value("${security.email}")String email,
             @Valid @RequestBody CommentRequestDto request){
         boolean response = commentService.saveComment(email, request);
         return ResponseEntity.ok(response);
