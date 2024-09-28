@@ -108,7 +108,7 @@ public class TravelogService {
             }
         } else {
             // 기본 이미지 설정 (S3의 기본 이미지 URL)
-            String defaultImageUrl = "https://s3.amazonaws.com/yourbucket/default-image.png";
+            String defaultImageUrl = "kgu6.c36yuu8wcket.ap-northeast-2.rds.amazonaws.com 3306 root fb83ec45-a36c-44b8-e1df-ac4068c76ac2";
             travelog.setImageurl(defaultImageUrl); // 기본 이미지 URL 저장
         }
 
