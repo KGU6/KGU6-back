@@ -5,7 +5,7 @@
 <br>
 
 <div align=center>
-<h4>여행 경로 공유 서비스</h4>
+<h2>여행 경로 공유 서비스</h2>
 <h5>2024.09.22-2024.09.29</h5>
 </div>
 <br />
@@ -34,11 +34,6 @@
 <br />
 <br /> -->
 
-
-<h2>📱 System Architechture</h2>
-<img src="https://ifh.cc/g/JQmxS6.jpg"/>
-<br />
-<br />
 
 <h2>🛠️ Tech Stack</h2>
 <div align=center>
