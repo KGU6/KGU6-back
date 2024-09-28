@@ -200,4 +200,18 @@ public class TravelogService {
                 .collect(Collectors.toList());
     }
 
+
+    // 키워드별 여행기 조회
+    public List<GetTravelogByKewordDTO> getTravelogsByKeyword(String keyword) {
+        List<TravelogEntity> travelogs = travelogRepository.findByKeyword(keyword);
+        return travelogs.stream().map(this::toDto).collect(Collectors.toList());
+    }
+
+    private GetTravelogByKewordDTO toDto(TravelogEntity travelogEntity) {
+        GetTravelogByKewordDTO dto = new GetTravelogByKewordDTO();
+        dto.setMemberName(travelogEntity.getMember().getName());
+        dto.setTitle(travelogEntity.getTitle());
+        dto.setImageUrl(travelogEntity.getImageurl());
+        return dto;
+    }
 }

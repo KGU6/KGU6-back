@@ -8,6 +8,7 @@ import com.kakaogroom6.server.domain.comment.service.CommentService;
 import com.kakaogroom6.server.domain.travelog.dto.request.CreateTravelogRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.request.FirstTravelRequestDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.CreateTravelogResponseDTO;
+import com.kakaogroom6.server.domain.travelog.dto.response.GetTravelogByKewordDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.GetTravelogDetaiResponselDTO;
 import com.kakaogroom6.server.domain.travelog.dto.response.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.service.TravelogService;
@@ -86,11 +87,18 @@ public class TravelogController {
         return ResponseEntity.ok(response);
     }
 
-
+    //여행기 상세 조회
     @GetMapping("/{travelogId}")
     public ResponseEntity<GetTravelogDetaiResponselDTO> getTravelogDetail(@PathVariable Long travelogId) {
         GetTravelogDetaiResponselDTO travelogDetail = travelogService.getTravelogDetail(travelogId);
         return ResponseEntity.ok(travelogDetail);
+    }
+
+    // 키워드별 여행기 조회
+    @GetMapping("/keyword")
+    public ResponseEntity<List<GetTravelogByKewordDTO>> getTravelogByKeyword(@RequestParam String keyword) {
+        List<GetTravelogByKewordDTO> travelogs = travelogService.getTravelogsByKeyword(keyword);
+        return ResponseEntity.ok(travelogs);
     }
 
 }
