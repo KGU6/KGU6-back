@@ -17,7 +17,6 @@ import com.kakaogroom6.server.domain.travelog.dto.response.TravelogsResponseDto;
 import com.kakaogroom6.server.domain.travelog.repository.TravelogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.format.DateTimeFormatter;
 
@@ -149,4 +148,5 @@ public class TravelogService {
             }
         }
     }
+
 }
