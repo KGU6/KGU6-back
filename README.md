@@ -92,6 +92,11 @@ WAYGO는 자신이 다녀온 여행기를 일정과 함께 공유할 수 있는 
 
 <h2>💻 Architecture</h2>
 
+<div align=center>
+    <img src="https://github.com/user-attachments/assets/39550f00-2996-4bf1-aa51-89ae43802e03"/>
+</div>
+
+
 <h2>🤩 Member</h2>
 <div align=center>
 <img height="800" src="https://github.com/user-attachments/assets/4d6f00f4-d561-4dfb-9716-382db10fecb1"/>
