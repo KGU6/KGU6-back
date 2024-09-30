@@ -8,26 +8,30 @@
 <div align=center>
 <h2>여행 경로 공유 서비스</h2>
 <h5>2024.09.22-2024.09.29</h5>
-</div>
 <br />
 <br />
 <br />
 
-<div align=center>
+![ezgif-1-8195ba26cc](https://github.com/user-attachments/assets/dd675e4d-292b-4ffa-b293-a5a95bb76ce0)
+
 WAYGO는 자신이 다녀온 여행기를 일정과 함께 공유할 수 있는 커뮤니티입니다.
-</div>
-<div align=center>
 소중한 여행의 추억을 더 오래 다양한 사람들과 공유해보세요!
 </div>
 
 <h2>⭐️ Feature</h2>
+
 - __여행기 CRUD__ : 나만의 여행기를 구글맵의 위치정보와 함께 기록할 수 있습니다.
+![ezgif-4-18921ebb4f](https://github.com/user-attachments/assets/1c365cf4-f0ec-454f-9a79-fa47ebbd8936)
 
 - __여행기 검색__ : 두 가지 정렬 기준과 지역 주소에 대한 키워드로 검색이 가능합니다.
+![ezgif-1-7500ff0787](https://github.com/user-attachments/assets/954aae2e-6f95-44d5-baae-32a5e586b058)
 
 - __마이 페이지__ : 나의 프로필을 꾸며보세요.
+![ezgif-1-40cd66f443](https://github.com/user-attachments/assets/f66fd952-c6d6-47c6-bcf2-b7492cd5bacf)
+
 
 - __댓글 작성__ : 멋진 여행기에 여러분의 의견을 남겨보세요.
+  ![ezgif-4-bbcae4716a](https://github.com/user-attachments/assets/384d0061-fd7b-4ec0-bdab-cd8820603861)
 
 <h2>📁 API</h2>
 <img src="https://github.com/user-attachments/assets/8ff9bf10-fb7b-4d9c-8feb-d217ace70e3c"/>
@@ -76,7 +80,7 @@ WAYGO는 자신이 다녀온 여행기를 일정과 함께 공유할 수 있는 
 
 <h2>🤩 Member</h2>
 <div align=center>
-<img height="400" src="https://github.com/user-attachments/assets/4d6f00f4-d561-4dfb-9716-382db10fecb1"/>
+<img height="800" src="https://github.com/user-attachments/assets/4d6f00f4-d561-4dfb-9716-382db10fecb1"/>
 </div>
 
 | Name | 김민상 | 김가연 | 이준석 | 김다은 |                 백지웅                  | 이승원 | 황승기 | 한준서 |
